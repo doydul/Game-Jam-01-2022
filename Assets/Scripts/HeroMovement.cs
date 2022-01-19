@@ -8,8 +8,6 @@ public class HeroMovement : MonoBehaviour {
     public float maxSpeed;
     public float stationaryThreshold;
 
-    bool stationary = true;
-
     Rigidbody2D rigidbody;
     Animator animator;
 
@@ -19,42 +17,40 @@ public class HeroMovement : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKey(KeyCode.W)) {
-            Move(0, 1);
-        }
-        if (Input.GetKey(KeyCode.S)) {
-            Move(0, -1);
-        }
-        if (Input.GetKey(KeyCode.A)) {
-            Move(-1, 0);
-        }
-        if (Input.GetKey(KeyCode.D)) {
-            Move(1, 0);
-        }
-
-        if (Input.GetKeyDown(KeyCode.J)) {
+        if (Input.GetKey(KeyCode.J)) {
             animator.SetBool("pickaxing", true);
-        }
-        if (Input.GetKeyUp(KeyCode.J)) {
+        }else {
             animator.SetBool("pickaxing", false);
+            if (Input.GetKey(KeyCode.W)) {
+                Move(0, 1);
+            }
+            if (Input.GetKey(KeyCode.S)) {
+                Move(0, -1);
+            }
+            if (Input.GetKey(KeyCode.A)) {
+                Move(-1, 0);
+            }
+            if (Input.GetKey(KeyCode.D)) {
+                Move(1, 0);
+            }
         }
 
         if (rigidbody.velocity.magnitude < stationaryThreshold) {
             animator.SetBool("stationary", true);
         } else {
             animator.SetBool("stationary", false);
-        }
-        if (Mathf.Abs(rigidbody.velocity.x) > Mathf.Abs(rigidbody.velocity.y)) {
-            if (rigidbody.velocity.x > 0) {
-                animator.SetFloat("direction", 1f);
+            if (Mathf.Abs(rigidbody.velocity.x) > Mathf.Abs(rigidbody.velocity.y)) {
+                if (rigidbody.velocity.x > 0) {
+                    animator.SetFloat("direction", 1f);
+                } else {
+                    animator.SetFloat("direction", 0.666f);
+                }
             } else {
-                animator.SetFloat("direction", 0.666f);
-            }
-        } else {
-            if (rigidbody.velocity.y > 0) {
-                animator.SetFloat("direction", 0f);
-            } else {
-                animator.SetFloat("direction", 0.333f);
+                if (rigidbody.velocity.y > 0) {
+                    animator.SetFloat("direction", 0f);
+                } else {
+                    animator.SetFloat("direction", 0.333f);
+                }
             }
         }
     }
