@@ -32,12 +32,6 @@ public class HeroResourceGathering : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.J)) {
-            miningStart = Time.time;
-            mining = true;
-        } else if (Input.GetKeyUp(KeyCode.J)) {
-            mining = false;
-        }
         if (activeResource != null && mining && Time.time - miningStart >= miningInterval) {
             miningStart = Time.time;
             if (activeResource.resourceType == ResourceType.Stone) {
@@ -46,5 +40,14 @@ public class HeroResourceGathering : MonoBehaviour {
                 gameManager.AddWood(1);
             }
         }
+    }
+
+    public void StartMining() {
+        miningStart = Time.time;
+        mining = true;
+    }
+
+    public void StopMining() {
+        mining = false;
     }
 }

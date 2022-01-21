@@ -10,28 +10,46 @@ public class HeroMovement : MonoBehaviour {
 
     Rigidbody2D rigidbody;
     Animator animator;
+    HeroResourceGathering resourceGathering;
+    HeroBuildingPlacement buildingPlacement;
+    
+    bool inputDisabled;
 
     void Awake() {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        resourceGathering = FindObjectOfType<HeroResourceGathering>();
+        buildingPlacement = FindObjectOfType<HeroBuildingPlacement>();
     }
 
     void Update() {
-        if (Input.GetKey(KeyCode.J)) {
-            animator.SetBool("pickaxing", true);
-        }else {
-            animator.SetBool("pickaxing", false);
-            if (Input.GetKey(KeyCode.W)) {
-                Move(0, 1);
+        if (inputDisabled) {
+            resourceGathering.StopMining();
+        } else {
+            if (Input.GetKeyDown(KeyCode.K) && buildingPlacement.active) {
+                buildingPlacement.Place();
             }
-            if (Input.GetKey(KeyCode.S)) {
-                Move(0, -1);
+            if (Input.GetKeyDown(KeyCode.J)) {
+                resourceGathering.StartMining();
+            } else if (Input.GetKeyUp(KeyCode.J)) {
+                resourceGathering.StopMining();
             }
-            if (Input.GetKey(KeyCode.A)) {
-                Move(-1, 0);
-            }
-            if (Input.GetKey(KeyCode.D)) {
-                Move(1, 0);
+            if (Input.GetKey(KeyCode.J)) {
+                animator.SetBool("pickaxing", true);
+            }else {
+                animator.SetBool("pickaxing", false);
+                if (Input.GetKey(KeyCode.W)) {
+                    Move(0, 1);
+                }
+                if (Input.GetKey(KeyCode.S)) {
+                    Move(0, -1);
+                }
+                if (Input.GetKey(KeyCode.A)) {
+                    Move(-1, 0);
+                }
+                if (Input.GetKey(KeyCode.D)) {
+                    Move(1, 0);
+                }
             }
         }
 
@@ -58,5 +76,13 @@ public class HeroMovement : MonoBehaviour {
     void Move(float x, float y) {
         rigidbody.AddForce(new Vector2(x * acceleration, y * acceleration));
         rigidbody.velocity = Vector2.ClampMagnitude(rigidbody.velocity, maxSpeed);
+    }
+
+    public void DisableInput() {
+        inputDisabled = true;
+    }
+
+    public void EnableInput() {
+        inputDisabled = false;
     }
 }

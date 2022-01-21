@@ -45,7 +45,13 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Building.cs" />
+     <Compile Include="Assets\Scripts\BuildingCollider.cs" />
+     <Compile Include="Assets\Scripts\BuildingMenu.cs" />
+     <Compile Include="Assets\Scripts\CraftableItem.cs" />
+     <Compile Include="Assets\Scripts\CraftingIcon.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\HeroBuildingPlacement.cs" />
      <Compile Include="Assets\Scripts\HeroMovement.cs" />
      <Compile Include="Assets\Scripts\HeroResourceGathering.cs" />
      <Compile Include="Assets\Scripts\Resource.cs" />
