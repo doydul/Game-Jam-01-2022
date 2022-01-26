@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b89daf01205cf426bb2e53e7dc7732c8, type: 3}
+  m_Name: Torch
+  m_EditorClassIdentifier: 
+  woodRequirement: 2
+  stoneRequirement: 0
+  limit: 999
+  dependencies:
+  - {fileID: 11400000, guid: a5f8dcc6791c64400ab9a0fd954e714a, type: 2}
+  sprite: {fileID: 21300000, guid: f480d217a30e341e781e0040abfa99a2, type: 3}
+  scale: 0.5
+  description: 'Torch
+
+    2 wood
+
+    Helps see at night, and wards off bears'
