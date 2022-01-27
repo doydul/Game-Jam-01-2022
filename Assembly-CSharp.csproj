@@ -59,6 +59,8 @@
      <Compile Include="Assets\Scripts\HeroBuildingPlacement.cs" />
      <Compile Include="Assets\Scripts\HeroMovement.cs" />
      <Compile Include="Assets\Scripts\HeroResourceGathering.cs" />
+     <Compile Include="Assets\Scripts\LightningBolt.cs" />
+     <Compile Include="Assets\Scripts\LightningStorm.cs" />
      <Compile Include="Assets\Scripts\Resource.cs" />
      <Compile Include="Assets\Scripts\StonePile.cs" />
      <Compile Include="Assets\Scripts\Timer.cs" />

@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour {
     HeroMovement hero;
     HeroBuildingPlacement heroBuilding;
     DayNightIndicator dayNight;
+    LightningStorm storm;
 
     int woodCount;
     int stoneCount;
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour {
         hero = FindObjectOfType<HeroMovement>();
         heroBuilding = FindObjectOfType<HeroBuildingPlacement>();
         dayNight = FindObjectOfType<DayNightIndicator>();
+        storm = FindObjectOfType<LightningStorm>();
         builtBuildings = new List<string>();
         health = 100;
         hunger = 100;
@@ -63,6 +65,7 @@ public class GameManager : MonoBehaviour {
             }
         }
         if (Input.GetKeyDown(KeyCode.J)) {
+            storm.StartStorm();
             if (buildingMenu.isOpen) {
                 var item = buildingMenu.GetSelection();
                 if (woodCount >= item.woodRequirement && stoneCount >= item.stoneRequirement && item.dependencies.All(ci => builtBuildings.Contains(ci.name)) && builtBuildings.Count(b => b == item.name) < item.limit) {
@@ -95,12 +98,14 @@ public class GameManager : MonoBehaviour {
                 isNight = false;
                 nightShade.SetActive(false);
                 nightDamageTimer = null;
+                storm.StartDayNightCycle();
             } else {
                 dayNight.Night();
                 isNight = true;
                 nightShade.SetActive(true);
                 nightDamageTimer = new Timer(nightDamageDuration);
             }
+            storm.StartDayNightCycle();
         }
         if (nightDamageTimer != null && nightDamageTimer.Check()) {
             AddHealth(-nightDamageAmount);
