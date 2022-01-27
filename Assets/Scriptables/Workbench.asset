@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b89daf01205cf426bb2e53e7dc7732c8, type: 3}
   m_Name: Workbench
   m_EditorClassIdentifier: 
-  woodRequirement: 3
-  stoneRequirement: 2
+  woodRequirement: 0
+  stoneRequirement: 0
   limit: 1
   dependencies: []
   sprite: {fileID: 21300000, guid: b24dc139d04a94044a28d9dfb93c4bef, type: 3}
+  behaviour: {fileID: 0}
   scale: 1
   description: 'Workbench
 

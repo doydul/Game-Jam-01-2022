@@ -17,6 +17,7 @@ MonoBehaviour:
   limit: 1
   dependencies: []
   sprite: {fileID: 21300000, guid: 5c2522f46457a491da4a9f59ca7eb7f0, type: 3}
+  behaviour: {fileID: 11400000, guid: dc27e1135643140c2a0b46e03ba0951d, type: 2}
   scale: 1
   description: 'Basic Shelter
 

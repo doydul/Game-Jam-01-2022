@@ -9,6 +9,7 @@ public class CraftableItem : ScriptableObject {
     public int limit = 999;
     public List<CraftableItem> dependencies;
     public Sprite sprite;
+    public BuildingType behaviour;
     public float scale = 1;
     [TextArea] public string description; 
 }

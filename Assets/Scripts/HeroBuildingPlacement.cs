@@ -24,7 +24,7 @@ public class HeroBuildingPlacement : MonoBehaviour {
         var building = Instantiate(buildingPrefab);
         currentBuilding = building.GetComponent<Building>();
         currentBuilding.GetComponent<Rigidbody2D>().MovePosition(transform.position);
-        currentBuilding.Init(item.scale, item.sprite, item.name);
+        currentBuilding.Init(item.scale, item.sprite, item.name, item.behaviour);
     }
 
     public void Place() {

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b89daf01205cf426bb2e53e7dc7732c8, type: 3}
+  m_Name: Farm
+  m_EditorClassIdentifier: 
+  woodRequirement: 0
+  stoneRequirement: 0
+  limit: 3
+  dependencies:
+  - {fileID: 11400000, guid: a5f8dcc6791c64400ab9a0fd954e714a, type: 2}
+  sprite: {fileID: 21300000, guid: 49598aed00467492190100e74eb4011b, type: 3}
+  behaviour: {fileID: 11400000, guid: 5141321b96f8744a29fc8e1cb8b27f26, type: 2}
+  scale: 1.5
+  description: 'Farm
+
+    4 wood
+
+    Requires Workshop
+
+    Produces food to satisfy
+    hunger
+
+    Limit 3
+
+'

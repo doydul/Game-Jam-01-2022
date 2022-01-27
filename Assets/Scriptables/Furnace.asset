@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b89daf01205cf426bb2e53e7dc7732c8, type: 3}
   m_Name: Furnace
   m_EditorClassIdentifier: 
-  woodRequirement: 1
-  stoneRequirement: 5
+  woodRequirement: 0
+  stoneRequirement: 0
   limit: 1
   dependencies: []
   sprite: {fileID: 21300000, guid: ac37bc7fdba9f4f4080b042ffea778ea, type: 3}
+  behaviour: {fileID: 0}
   scale: 1
   description: 'Furnace
 

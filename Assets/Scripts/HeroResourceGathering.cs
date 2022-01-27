@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Collider2D))]
 public class HeroResourceGathering : MonoBehaviour {
@@ -11,10 +12,12 @@ public class HeroResourceGathering : MonoBehaviour {
     Resource activeResource;
     bool mining;
     float miningStart;
+    List<Building> buildings;
 
     void Awake() {
         collider = GetComponent<Collider>();
         gameManager = FindObjectOfType<GameManager>();
+        buildings = new List<Building>();
     }
 
     void OnTriggerEnter2D(Collider2D other) {
@@ -22,12 +25,20 @@ public class HeroResourceGathering : MonoBehaviour {
         if (resource != null) {
             activeResource = resource;
         }
+        var buildingCollider = other.GetComponent<BuildingCollider>();
+        if (buildingCollider != null) {
+            buildings.Add(buildingCollider.building);
+        }
     }
 
     void OnTriggerExit2D(Collider2D other) {
         var resource = other.GetComponent<Resource>();
         if (resource != null && resource == activeResource) {
             activeResource = null;
+        }
+        var buildingCollider = other.GetComponent<BuildingCollider>();
+        if (buildingCollider != null) {
+            buildings.Remove(buildingCollider.building);
         }
     }
 
@@ -49,5 +60,11 @@ public class HeroResourceGathering : MonoBehaviour {
 
     public void StopMining() {
         mining = false;
+    }
+
+    public void Interact() {
+        foreach (var building in buildings) {
+            building.Interact();
+        }
     }
 }

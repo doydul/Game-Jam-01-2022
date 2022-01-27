@@ -45,19 +45,24 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BasicShelter.cs" />
      <Compile Include="Assets\Scripts\Building.cs" />
      <Compile Include="Assets\Scripts\BuildingCollider.cs" />
      <Compile Include="Assets\Scripts\BuildingMenu.cs" />
+     <Compile Include="Assets\Scripts\BuildingType.cs" />
      <Compile Include="Assets\Scripts\CraftableItem.cs" />
      <Compile Include="Assets\Scripts\CraftingIcon.cs" />
      <Compile Include="Assets\Scripts\DayNightIndicator.cs" />
+     <Compile Include="Assets\Scripts\Farm.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\HerbGarden.cs" />
      <Compile Include="Assets\Scripts\HeroBuildingPlacement.cs" />
      <Compile Include="Assets\Scripts\HeroMovement.cs" />
      <Compile Include="Assets\Scripts\HeroResourceGathering.cs" />
      <Compile Include="Assets\Scripts\Resource.cs" />
      <Compile Include="Assets\Scripts\StonePile.cs" />
      <Compile Include="Assets\Scripts\Timer.cs" />
+     <Compile Include="Assets\Scripts\Torch.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />

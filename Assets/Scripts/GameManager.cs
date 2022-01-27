@@ -10,10 +10,13 @@ public class GameManager : MonoBehaviour {
     public TMP_Text woodCounter;
     public TMP_Text stoneCounter;
     public Slider healthSlider;
+    public Slider hungerSlider;
     public GameObject nightShade;
     public float nightDayDuration;
     public float nightDamageDuration;
     public int nightDamageAmount;
+    public int hungerDamageAmount;
+    public int hungerDeteriation;
 
     BuildingMenu buildingMenu;
     HeroMovement hero;
@@ -23,8 +26,11 @@ public class GameManager : MonoBehaviour {
     int woodCount;
     int stoneCount;
     int health;
+    int hunger;
     float dayNightStart;
     Timer nightDamageTimer;
+    Timer hungerDamageTimer;
+    Timer hungerTimer;
 
     public bool isNight { get; private set; }
     public List<string> builtBuildings { get; private set; }
@@ -36,21 +42,24 @@ public class GameManager : MonoBehaviour {
         dayNight = FindObjectOfType<DayNightIndicator>();
         builtBuildings = new List<string>();
         health = 100;
+        hunger = 100;
         dayNightStart = Time.time;
+        hungerTimer = new Timer(nightDamageDuration);
     }
 
     void Update() {
         DayNightCycle();
+        Hunger();
         if (Input.GetKeyDown(KeyCode.C)) {
+            heroBuilding.Cancel();
             if (buildingMenu.isOpen) {
                 buildingMenu.Close();
-                resourceCountersObject.SetActive(false);
+                resourceCountersObject.SetActive(true);
                 hero.EnableInput();
-                heroBuilding.Cancel();
             } else {
                 hero.DisableInput();
                 buildingMenu.Open();
-                resourceCountersObject.SetActive(true);
+                resourceCountersObject.SetActive(false);
             }
         }
         if (Input.GetKeyDown(KeyCode.J)) {
@@ -98,6 +107,20 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    void Hunger() {
+        if (hunger <= 0 && hungerDamageTimer == null) {
+            hungerDamageTimer = new Timer(nightDamageDuration);
+        } else if (hunger > 0) {
+            hungerDamageTimer = null;
+        }
+        if (hungerDamageTimer != null && hungerDamageTimer.Check()) {
+            AddHealth(-hungerDamageAmount);
+        }
+        if (hungerTimer.Check()) {
+            AddHunger(-hungerDeteriation);
+        }
+    }
+
     public void AddWood(int amount) {
         woodCount += amount;
         woodCounter.text = woodCount.ToString();
@@ -112,5 +135,12 @@ public class GameManager : MonoBehaviour {
         health += amount;
         if (health > 100) health = 100;
         healthSlider.value = (float)health / 100;
+    }
+    
+    public void AddHunger(int amount) {
+        hunger += amount;
+        if (hunger > 100) hunger = 100;
+        if (hunger < 0) hunger = 0;
+        hungerSlider.value = (float)hunger / 100;
     }
 }

@@ -26,8 +26,12 @@ public class HeroMovement : MonoBehaviour {
         if (inputDisabled) {
             resourceGathering.StopMining();
         } else {
-            if (Input.GetKeyDown(KeyCode.K) && buildingPlacement.active) {
-                buildingPlacement.Place();
+            if (Input.GetKeyDown(KeyCode.K)) {
+                if (buildingPlacement.active) {
+                    buildingPlacement.Place();
+                } else {
+                    resourceGathering.Interact();
+                }
             }
             if (Input.GetKeyDown(KeyCode.J)) {
                 resourceGathering.StartMining();
