@@ -17,7 +17,7 @@ MonoBehaviour:
   limit: 1
   dependencies: []
   sprite: {fileID: 21300000, guid: 57b71a1a4016f40e7abd27f43c2d2c95, type: 3}
-  behaviour: {fileID: 0}
+  behaviour: {fileID: 11400000, guid: 1a1b6397cf08f48a4973fab13aae0d48, type: 2}
   scale: 1
   description: 'Rocket Ship
 

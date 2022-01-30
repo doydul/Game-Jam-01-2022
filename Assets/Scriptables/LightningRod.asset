@@ -18,7 +18,7 @@ MonoBehaviour:
   dependencies:
   - {fileID: 11400000, guid: a5f8dcc6791c64400ab9a0fd954e714a, type: 2}
   sprite: {fileID: 21300000, guid: 36f163bd5e0304a4387adf702af5b999, type: 3}
-  behaviour: {fileID: 0}
+  behaviour: {fileID: 11400000, guid: e1854a02b243e4a4f8e360a6d3c3c7e0, type: 2}
   scale: 1
   description: 'Lightning Rod
 

@@ -46,6 +46,8 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\BasicShelter.cs" />
+     <Compile Include="Assets\Scripts\Bear.cs" />
+     <Compile Include="Assets\Scripts\BearAttack.cs" />
      <Compile Include="Assets\Scripts\BeeHive.cs" />
      <Compile Include="Assets\Scripts\Building.cs" />
      <Compile Include="Assets\Scripts\BuildingCollider.cs" />

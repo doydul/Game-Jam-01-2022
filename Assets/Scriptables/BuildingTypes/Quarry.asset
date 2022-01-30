@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b4bb1194b8049029a46edf30ed19d3, type: 3}
   m_Name: Quarry
   m_EditorClassIdentifier: 
-  productionTime: 0
+  productionTime: 1

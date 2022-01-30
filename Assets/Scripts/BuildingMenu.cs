@@ -15,6 +15,7 @@ public class BuildingMenu : MonoBehaviour {
     void Awake() {
         iconPrototype.SetActive(false);
         Close();
+        craftableItems.Reverse();
         foreach (var item in craftableItems) {
             SpawnIcon(item);
         }
@@ -23,15 +24,15 @@ public class BuildingMenu : MonoBehaviour {
     void Update() {
         if (!isOpen) return;
         if (Input.GetKeyDown(KeyCode.A)) {
-            currentIndex--;
-            if (currentIndex < 0) {
-                currentIndex = childCount - 1;
-            }
-            HighlightItem(currentIndex);
-        } else if (Input.GetKeyDown(KeyCode.D)) {
             currentIndex++;
             if (currentIndex >= childCount) {
                 currentIndex = 0;
+            }
+            HighlightItem(currentIndex);
+        } else if (Input.GetKeyDown(KeyCode.D)) {
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = childCount - 1;
             }
             HighlightItem(currentIndex);
         }
@@ -56,7 +57,7 @@ public class BuildingMenu : MonoBehaviour {
     public void Open() {
         isOpen = true;
         layout.SetActive(true);
-        currentIndex = 0;
+        currentIndex = layout.transform.childCount - 2;
         HighlightItem(currentIndex);
     }
 

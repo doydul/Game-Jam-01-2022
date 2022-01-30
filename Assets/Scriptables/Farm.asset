@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b89daf01205cf426bb2e53e7dc7732c8, type: 3}
   m_Name: Farm
   m_EditorClassIdentifier: 
-  woodRequirement: 0
+  woodRequirement: 4
   stoneRequirement: 0
   limit: 3
   dependencies:

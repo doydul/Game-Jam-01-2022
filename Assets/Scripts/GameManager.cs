@@ -17,12 +17,14 @@ public class GameManager : MonoBehaviour {
     public int nightDamageAmount;
     public int hungerDamageAmount;
     public int hungerDeteriation;
+    public float bearInterval;
 
     BuildingMenu buildingMenu;
     HeroMovement hero;
     HeroBuildingPlacement heroBuilding;
     DayNightIndicator dayNight;
     LightningStorm storm;
+    BearAttack bears;
 
     int woodCount;
     int stoneCount;
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour {
     Timer nightDamageTimer;
     Timer hungerDamageTimer;
     Timer hungerTimer;
+    Timer bearTimer;
 
     public bool isNight { get; private set; }
     public List<string> builtBuildings { get; private set; }
@@ -42,14 +45,19 @@ public class GameManager : MonoBehaviour {
         heroBuilding = FindObjectOfType<HeroBuildingPlacement>();
         dayNight = FindObjectOfType<DayNightIndicator>();
         storm = FindObjectOfType<LightningStorm>();
+        bears = FindObjectOfType<BearAttack>();
         builtBuildings = new List<string>();
         health = 100;
         hunger = 100;
         dayNightStart = Time.time;
         hungerTimer = new Timer(nightDamageDuration);
+        woodCount = 100;
+        stoneCount = 100;
+        bearTimer = new Timer(bearInterval);
     }
 
     void Update() {
+        BearStuff();
         DayNightCycle();
         Hunger();
         if (Input.GetKeyDown(KeyCode.C)) {
@@ -87,6 +95,12 @@ public class GameManager : MonoBehaviour {
             #else
                 Application.Quit();
             #endif
+        }
+    }
+
+    void BearStuff() {
+        if (bearTimer.Check()) {
+            bears.StartBearAttack();
         }
     }
 

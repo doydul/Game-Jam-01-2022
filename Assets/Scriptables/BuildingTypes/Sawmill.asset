@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bb55b8e9c7944a169b12749c6222464, type: 3}
   m_Name: Sawmill
   m_EditorClassIdentifier: 
-  productionTime: 0
+  productionTime: 1
