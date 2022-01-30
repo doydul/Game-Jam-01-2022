@@ -11,6 +11,7 @@ public class Bear : MonoBehaviour {
 
     HeroMovement hero;
     Timer attackTimer;
+    Timer soundTimer;
     Rigidbody2D rigidbody;
     GameManager manager;
 
@@ -23,9 +24,13 @@ public class Bear : MonoBehaviour {
         attackTimer = new Timer(damageInterval);
         manager = FindObjectOfType<GameManager>();
         spriteXscale = spriteTransform.localScale.x;
+        soundTimer = new Timer(6);
+        Sounds.instance.BearSound();
     }
 
     void Update() {
+        if (hero == null) return;
+        if (soundTimer.Check()) Sounds.instance.BearSound();
         Vector2 diff = hero.transform.position - transform.position;
         if (diff.magnitude >= 20) Destroy(gameObject);
         if (fleeing) {

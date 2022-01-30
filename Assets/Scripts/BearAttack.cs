@@ -11,7 +11,6 @@ public class BearAttack : MonoBehaviour {
 
     void Awake() {
         timer = new Timer(attackDuration);
-        SpawnBear();
     }
 
     void Update() {

@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     
@@ -12,12 +13,14 @@ public class GameManager : MonoBehaviour {
     public Slider healthSlider;
     public Slider hungerSlider;
     public GameObject nightShade;
+    public GameObject youWin;
+    public GameObject youLose;
+    public GameObject ui;
     public float nightDayDuration;
     public float nightDamageDuration;
     public int nightDamageAmount;
     public int hungerDamageAmount;
     public int hungerDeteriation;
-    public float bearInterval;
 
     BuildingMenu buildingMenu;
     HeroMovement hero;
@@ -34,7 +37,7 @@ public class GameManager : MonoBehaviour {
     Timer nightDamageTimer;
     Timer hungerDamageTimer;
     Timer hungerTimer;
-    Timer bearTimer;
+    Timer endScreenTimer;
 
     public bool isNight { get; private set; }
     public List<string> builtBuildings { get; private set; }
@@ -51,13 +54,11 @@ public class GameManager : MonoBehaviour {
         hunger = 100;
         dayNightStart = Time.time;
         hungerTimer = new Timer(nightDamageDuration);
-        woodCount = 100;
-        stoneCount = 100;
-        bearTimer = new Timer(bearInterval);
+        youLose.SetActive(false);
+        youWin.SetActive(false);
     }
 
     void Update() {
-        BearStuff();
         DayNightCycle();
         Hunger();
         if (Input.GetKeyDown(KeyCode.C)) {
@@ -73,7 +74,6 @@ public class GameManager : MonoBehaviour {
             }
         }
         if (Input.GetKeyDown(KeyCode.J)) {
-            storm.StartStorm();
             if (buildingMenu.isOpen) {
                 var item = buildingMenu.GetSelection();
                 if (woodCount >= item.woodRequirement && stoneCount >= item.stoneRequirement && item.dependencies.All(ci => builtBuildings.Contains(ci.name)) && builtBuildings.Count(b => b == item.name) < item.limit) {
@@ -90,17 +90,10 @@ public class GameManager : MonoBehaviour {
             }
         }
         if (health <= 0) {
-            #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-            #else
-                Application.Quit();
-            #endif
+            LoseGame();
         }
-    }
-
-    void BearStuff() {
-        if (bearTimer.Check()) {
-            bears.StartBearAttack();
+        if (endScreenTimer != null && endScreenTimer.Check()) {
+            SceneManager.LoadScene("menu");
         }
     }
 
@@ -113,6 +106,9 @@ public class GameManager : MonoBehaviour {
                 nightShade.SetActive(false);
                 nightDamageTimer = null;
                 storm.StartDayNightCycle();
+                if (Random.value < 0.7f) {
+                    bears.StartBearAttack();
+                }
             } else {
                 dayNight.Night();
                 isNight = true;
@@ -141,7 +137,18 @@ public class GameManager : MonoBehaviour {
     }
 
     public void WinGame() {
-        // implement me pls
+        youWin.SetActive(true);
+        ui.SetActive(false);
+        endScreenTimer = new Timer(5);
+        Destroy(hero.gameObject);
+    }
+
+    public void LoseGame() {
+        if (hero == null) return;
+        youLose.SetActive(true);
+        ui.SetActive(false);
+        endScreenTimer = new Timer(5);
+        Destroy(hero.gameObject);
     }
 
     public void AddWood(int amount) {

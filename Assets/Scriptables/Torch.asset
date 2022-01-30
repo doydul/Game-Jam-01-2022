@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b89daf01205cf426bb2e53e7dc7732c8, type: 3}
   m_Name: Torch
   m_EditorClassIdentifier: 
-  woodRequirement: 2
+  woodRequirement: 1
   stoneRequirement: 0
   limit: 999
   dependencies:
@@ -22,6 +22,6 @@ MonoBehaviour:
   scale: 0.5
   description: 'Torch
 
-    2 wood
+    1 wood
 
-    Helps see at night, and wards off bears'
+    Helps see at night'

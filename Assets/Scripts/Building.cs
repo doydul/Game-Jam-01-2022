@@ -16,6 +16,7 @@ public class Building : MonoBehaviour {
     public bool canPlace { get; private set; }
     public string name { get; private set; }
     public BuildingType behaviour { get; private set; }
+    public bool isPlaced { get; private set; }
 
     void Awake() {
         collider.isTrigger = true;
@@ -50,6 +51,7 @@ public class Building : MonoBehaviour {
         highlightSprite.gameObject.SetActive(false);
         highlightMask.gameObject.SetActive(false);
         collider.isTrigger = false;
+        isPlaced = true;
     }
 
     public void Interact() {

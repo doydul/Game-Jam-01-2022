@@ -10,6 +10,7 @@ public class Quarry : BuildingType {
     }
 
     public override void OnUpdate(Building parent) {
+        if (!parent.isPlaced) return;
         var timer = parent.storage["timer"] as Timer;
         if (timer.Check()) {
             parent.manager.AddStone(1);

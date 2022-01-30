@@ -19,7 +19,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e6548e65531824359869738344c325e5, type: 2}
   sprite: {fileID: 21300000, guid: a70fb3f0463d449919abaa48e3bd04f9, type: 3}
   behaviour: {fileID: 11400000, guid: 09624b24280414a32bf832cf515b05d9, type: 2}
-  scale: 1
+  scale: 1.2
   description: 'Bee Hive
 
     4 wood 1 stone

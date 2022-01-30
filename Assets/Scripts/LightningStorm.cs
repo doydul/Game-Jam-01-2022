@@ -24,6 +24,7 @@ public class LightningStorm : MonoBehaviour {
             if (stormTimer.Check()) {
                 StopStorm();
             } else if (strikeTimer.Check()) {
+                Sounds.instance.ThunderSound();
                 var lb = Instantiate(lightningPrefab);
                 if (Random.value < hitPlayerChance) {
                     if (lightningRod != null) {
