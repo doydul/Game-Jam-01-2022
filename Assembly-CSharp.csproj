@@ -46,6 +46,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\BasicShelter.cs" />
+     <Compile Include="Assets\Scripts\BeeHive.cs" />
      <Compile Include="Assets\Scripts\Building.cs" />
      <Compile Include="Assets\Scripts\BuildingCollider.cs" />
      <Compile Include="Assets\Scripts\BuildingMenu.cs" />
@@ -60,8 +61,12 @@
      <Compile Include="Assets\Scripts\HeroMovement.cs" />
      <Compile Include="Assets\Scripts\HeroResourceGathering.cs" />
      <Compile Include="Assets\Scripts\LightningBolt.cs" />
+     <Compile Include="Assets\Scripts\LightningRod.cs" />
      <Compile Include="Assets\Scripts\LightningStorm.cs" />
+     <Compile Include="Assets\Scripts\Quarry.cs" />
      <Compile Include="Assets\Scripts\Resource.cs" />
+     <Compile Include="Assets\Scripts\RocketShip.cs" />
+     <Compile Include="Assets\Scripts\Sawmill.cs" />
      <Compile Include="Assets\Scripts\StonePile.cs" />
      <Compile Include="Assets\Scripts\Timer.cs" />
      <Compile Include="Assets\Scripts\Torch.cs" />

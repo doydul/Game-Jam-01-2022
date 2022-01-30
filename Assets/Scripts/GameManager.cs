@@ -126,6 +126,10 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public void WinGame() {
+        // implement me pls
+    }
+
     public void AddWood(int amount) {
         woodCount += amount;
         woodCounter.text = woodCount.ToString();

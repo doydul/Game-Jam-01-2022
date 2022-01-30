@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b89daf01205cf426bb2e53e7dc7732c8, type: 3}
+  m_Name: RocketShip
+  m_EditorClassIdentifier: 
+  woodRequirement: 15
+  stoneRequirement: 15
+  limit: 1
+  dependencies: []
+  sprite: {fileID: 21300000, guid: 57b71a1a4016f40e7abd27f43c2d2c95, type: 3}
+  behaviour: {fileID: 0}
+  scale: 1
+  description: 'Rocket Ship
+
+    15 wood 15 stone
+
+    Requires Furnace
+
+    Escape
+    to your home planet! (win the game)
+
+    Limit 1'
